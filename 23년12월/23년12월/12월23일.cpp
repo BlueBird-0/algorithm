@@ -5,7 +5,7 @@
 const static int LIMIT = 10000;
 
 int d(int n);
-void Q4673()
+int Q4673()
 {
 	bool result[LIMIT + 1] = { false, };
 	for (int i = 0; i <= LIMIT; i++) {
@@ -20,6 +20,7 @@ void Q4673()
 		if (result[i] == false)
 			printf("%d\n", i);
 	}
+	return 0;
 }
 
 int d(int n)
