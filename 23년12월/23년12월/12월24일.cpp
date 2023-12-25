@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <queue>
 
+/*
 int N, M, V;
 bool dfsMap[1001][1001];
 bool bfsMap[1001][1001];
@@ -72,3 +73,4 @@ int Q1260() {
 	BFS(V);
 	return 0;
 }
+*/

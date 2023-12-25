@@ -4,10 +4,11 @@
 #include <vector>
 int Q4673();	//¼¿ÇÁ³Ñ¹ö
 int Q1260();	//DFS¿Í BFS
+int Q2178();
 
 int main()
 {
-	Q1260();
+	Q2178();
 	system("pause");
 	return 0;
 }
