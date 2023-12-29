@@ -1,5 +1,5 @@
 ﻿//https://www.acmicpc.net/problem/2751
-
+/*
 #include <iostream>
 using namespace std;
 int nums[1000000] = { 0, };
@@ -54,4 +54,4 @@ int Q2751() {
 	}
 	
 	return 0;
-}
+}*/

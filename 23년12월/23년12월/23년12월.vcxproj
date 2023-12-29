@@ -114,6 +114,7 @@
     <ClCompile Include="12월24일.cpp" />
     <ClCompile Include="12월25일.cpp" />
     <ClCompile Include="12월26일.cpp" />
+    <ClCompile Include="12월29일.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
