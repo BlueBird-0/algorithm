@@ -5,47 +5,51 @@
 #include <algorithm>
 #include <queue>
 
-/*
-int N, M, V;
-bool dfsMap[1001][1001];
-bool bfsMap[1001][1001];
-std::queue<int> bfsQ;
 
-void DFS(int dest) {
-	printf("%d ", dest);
-	for (int i = 0; i <= N; i++) {
-		dfsMap[i][dest] = false;
-	}
-	for (int i=0; i<= N; i++)
-	{
-		if (dfsMap[dest][i])
-			DFS(i);
-	}
-}
+namespace {
+	int N, M, V;
+	bool dfsMap[1001][1001];
+	bool bfsMap[1001][1001];
+	std::queue<int> bfsQ;
 
-
-void BFS(int dest) {
-	printf("%d ", dest);
-
-	for (int i=0; i<=N; i++)
-	{
-		if (bfsMap[dest][i])
+	void DFS(int dest) {
+		printf("%d ", dest);
+		for (int i = 0; i <= N; i++) {
+			dfsMap[i][dest] = false;
+		}
+		for (int i = 0; i <= N; i++)
 		{
-			bfsQ.push(i);
-			for (int j = 0; j <= N; j++)
-			{
-				bfsMap[j][i] = false;
-			}
+			if (dfsMap[dest][i])
+				DFS(i);
 		}
 	}
 
-	while (!bfsQ.empty())
-	{
-		int next = bfsQ.front();
-		bfsQ.pop();
-		BFS(next);
+
+	void BFS(int dest) {
+		printf("%d ", dest);
+
+		for (int i = 0; i <= N; i++)
+		{
+			if (bfsMap[dest][i])
+			{
+				bfsQ.push(i);
+				for (int j = 0; j <= N; j++)
+				{
+					bfsMap[j][i] = false;
+				}
+			}
+		}
+
+		while (!bfsQ.empty())
+		{
+			int next = bfsQ.front();
+			bfsQ.pop();
+			BFS(next);
+		}
 	}
+
 }
+
 
 int Q1260() {
 	scanf("%d %d %d", &N, &M, &V);
@@ -73,4 +77,3 @@ int Q1260() {
 	BFS(V);
 	return 0;
 }
-*/

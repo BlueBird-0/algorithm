@@ -2,9 +2,12 @@
 //https://www.acmicpc.net/problem/2606
 #include <iostream>
 #include <queue>
-using namespace std;
-bool network[101][101] = { false, };
-bool connected[101] = { false, };
+
+namespace {
+	using namespace std;
+	bool network[101][101] = { false, };
+	bool connected[101] = { false, };
+}
 
 int Q2606()
 {

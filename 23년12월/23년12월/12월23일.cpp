@@ -2,9 +2,28 @@
 #include <iostream>
 #include <vector>
 
-const static int LIMIT = 10000;
+namespace {
+	const static int LIMIT = 10000;
 
-int d(int n);
+	int d(int n)
+	{
+		std::vector<int> arr;
+		int position = n;
+		int result = n;
+		while (position > 0)
+		{
+			arr.push_back(position % 10);
+			position /= 10;
+		}
+
+		for (int &i : arr)
+		{
+			result += i;
+		}
+		return result;
+	}
+}
+
 int Q4673()
 {
 	bool result[LIMIT + 1] = { false, };
@@ -21,22 +40,4 @@ int Q4673()
 			printf("%d\n", i);
 	}
 	return 0;
-}
-
-int d(int n)
-{
-	std::vector<int> arr;
-	int position = n;
-	int result = n;
-	while (position > 0)
-	{
-		arr.push_back(position % 10);
-		position /= 10;
-	}
-
-	for (int &i : arr)
-	{
-		result += i;
-	}
-	return result;
 }

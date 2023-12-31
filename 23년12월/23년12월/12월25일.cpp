@@ -1,59 +1,62 @@
-/*
 #include <iostream>
 #include <queue>
 using namespace std;
-int map[100][100];
-int N, M;
 
-bool checkDown(int x, int y) {
-	if (y + 1 < N) {
-		if (map[y + 1][x] == 1) {
-			if(y==0 && x==0)
-				map[y + 1][x] += 1;
-			else map[y + 1][x]+= map[y][x];
-			return true;
+namespace {
+	int map[100][100];
+	int N, M;
+
+	bool checkDown(int x, int y) {
+		if (y + 1 < N) {
+			if (map[y + 1][x] == 1) {
+				if (y == 0 && x == 0)
+					map[y + 1][x] += 1;
+				else map[y + 1][x] += map[y][x];
+				return true;
+			}
 		}
+		return false;
 	}
-	return false;
+
+	bool checkUp(int x, int y) {
+		if (y - 1 >= 0) {
+			if (map[y - 1][x] == 1) {
+				if (y == 0 && x == 0)
+					map[y - 1][x] += 1;
+				else map[y - 1][x] += map[y][x];
+				return true;
+			}
+		}
+		return false;
+	}
+
+	bool checkLeft(int x, int y) {
+		if (x - 1 >= 0) {
+			if (map[y][x - 1] == 1) {
+				if (y == 0 && x == 0)
+					map[y][x - 1] += 1;
+				else map[y][x - 1] += map[y][x];
+				return  true;
+			}
+		}
+		return false;
+	}
+
+	bool checkRight(int x, int y) {
+		if (x + 1 < M) {
+			if (map[y][x + 1] == 1) {
+				if (y == 0 && x == 0)
+					map[y][x + 1] += 1;
+				else map[y][x + 1] += map[y][x];
+				return true;
+			}
+		}
+		return false;
+	}
 }
 
-bool checkUp(int x, int y) {
-	if (y - 1 >= 0) {
-		if (map[y - 1][x] == 1) {
-			if (y == 0 && x == 0)
-				map[y - 1][x] += 1;
-			else map[y - 1][x] += map[y][x];
-			return true;
-		}
-	}
-	return false;
-}
 
-bool checkLeft(int x, int y) {
-	if (x -1 >= 0) {
-		if (map[y][x - 1] == 1) {
-			if (y == 0 && x == 0)
-				map[y][x - 1] += 1;
-			else map[y][x - 1] += map[y][x];
-			return  true;
-		}
-	}
-	return false;
-}
-
-bool checkRight(int x, int y) {
-	if (x + 1 < M) {
-		if (map[y][x + 1] == 1) {
-			if (y == 0 && x == 0)
-				map[y][x + 1] += 1;
-			else map[y][x + 1] += map[y][x];
-			return true;
-		}
-	}
-	return false;
-}
-
-int main() {
+int Q2178() {
 	cin >> N >> M;
 
 	for (int y=0; y<N; y++)
@@ -104,4 +107,3 @@ int main() {
 	cout << "rsult";
 	return 0; 
 }
-*/
