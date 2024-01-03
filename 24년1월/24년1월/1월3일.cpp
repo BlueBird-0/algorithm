@@ -3,8 +3,7 @@
 #include <queue>
 using namespace std;
 
-//int Q11279()
-int main()
+int Q11279()
 {
 	cin.tie(0);
 	priority_queue<int> maxQ;
