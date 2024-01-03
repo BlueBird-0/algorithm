@@ -1,12 +1,14 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-int Q1012();	//1¿ù 1ÀÏ. À¯±â³ó ¹èÃß
-int Q1927();	//1¿ù 1ÀÏ_2. ÃÖ¼Ò Èü
-int Q11286();	//1¿ù 3ÀÏ. ÃÖ´ë Èü
+int Q1012();	//1ì›” 1ì¼. ìœ ê¸°ë† ë°°ì¶”
+int Q1927();	//1ì›” 1ì¼_2. ìµœì†Œ í™
+int Q11279();	//1ì›” 3ì¼. ìµœëŒ€ í™
+int Q11286();	//1ì›” 3ì¼_2. ì ˆëŒ€ê°’ í™
+int Q2587();	//1ì›” 3ì¼_3. ëŒ€í‘œê°’2
 
 int main()
 {
-	Q11286();
+	Q2587();
 	system("pause");
 	return 0;
 }
