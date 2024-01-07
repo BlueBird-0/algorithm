@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int Q1463()
+int Q9095()
 {
 	int arr[12] = {0,};
 	arr[1] = 1;
