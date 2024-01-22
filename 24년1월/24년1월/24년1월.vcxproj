@@ -118,6 +118,7 @@
     <ClCompile Include="1월19일_2.cpp" />
     <ClCompile Include="1월1일.cpp" />
     <ClCompile Include="1월1일_2.cpp" />
+    <ClCompile Include="1월23일.cpp" />
     <ClCompile Include="1월3일.cpp" />
     <ClCompile Include="1월3일_2.cpp" />
     <ClCompile Include="1월3일_3.cpp" />
