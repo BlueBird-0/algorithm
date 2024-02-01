@@ -40,6 +40,8 @@ namespace {
 
 int Q1012()
 {
+	ios::sync_with_stdio(false);	//시간초과 피하기 위해 필요함 (이건 필요없음)
+	cin.tie(0);						//시간초과 피하기 위해 필요함
 	cin >> Testcase;
 
 	while (Testcase--)
