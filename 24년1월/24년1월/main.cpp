@@ -23,7 +23,7 @@ int Q11437();	//1월 31일. LCA1.
 
 int main()
 {
-	Q11437();
+	Q1149();
 	system("pause");
 	return 0;
 }
