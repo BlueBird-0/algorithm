@@ -17,7 +17,7 @@ namespace {
 	};
 }
 
-int main()
+int Q1002()
 {
 	int T;
 	cin >> T;
