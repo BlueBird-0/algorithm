@@ -320,7 +320,7 @@ namespace {
 	}
 }
 
-int main()
+int Q13460()
 {
 	ios::sync_with_stdio(false);	//시간초과 피하기 위해 필요함 (이건 필요없음)
 	cin.tie(0);						//시간초과 피하기 위해 필요함

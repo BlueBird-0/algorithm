@@ -1,14 +1,15 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 
-int Q11438();	//2¿ù 1ÀÏ. LCA2
-int Q1002();	//2¿ù 5ÀÏ. ÅÍ·¿
-int Q2533();	//2¿ù 5ÀÏ_2. SNS (¹ÌÇØ°á)
-int Q13460();	//2¿ù 6ÀÏ. ±¸½½Å»Ãâ2
+int Q11438();	//2ì›” 1ì¼. LCA2
+int Q1002();	//2ì›” 5ì¼. í„°ë ›
+int Q2533();	//2ì›” 5ì¼_2. SNS (ë¯¸í•´ê²°)
+int Q13460();	//2ì›” 6ì¼. êµ¬ìŠ¬íƒˆì¶œ2
+int Q1005();	//2ì›” 7ì¼. ACM í¬ë˜í”„íŠ¸
 
 int main()
 {
-	Q13460();
+	Q1005();
 	system("pause");
 	return 0;
 }
