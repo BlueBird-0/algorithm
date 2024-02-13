@@ -112,11 +112,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="2월13일.cpp" />
     <ClCompile Include="2월1일.cpp" />
     <ClCompile Include="2월5일.cpp" />
     <ClCompile Include="2월5일_2.cpp" />
     <ClCompile Include="2월6일.cpp" />
     <ClCompile Include="2월7일.cpp" />
+    <ClCompile Include="2월8일.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
