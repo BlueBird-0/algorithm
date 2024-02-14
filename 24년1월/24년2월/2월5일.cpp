@@ -1,9 +1,9 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <math.h>
 using namespace std;
 
 namespace {
-	void Swap(double& x1, double &y1, double &r1, double &x2, double &y2, double &r2)
+	void Swap(double& x1, double& y1, double& r1, double& x2, double& y2, double& r2)
 	{
 		double tempX = x1;
 		double tempY = y1;
@@ -21,59 +21,55 @@ int Q1002()
 {
 	int T;
 	cin >> T;
-	while(T--)
+	while (T--)
 	{
 		double x1, y1, r1, x2, y2, r2;
 		cin >> x1 >> y1 >> r1 >> x2 >> y2 >> r2;
 
-		//´õ Å« ¿øÀÌ 1¹øÀÌÀÌ µÇµµ·Ï ½º¿Ò
+		//ë” í° ì›ì´ 1ë²ˆì´ì´ ë˜ë„ë¡ ìŠ¤ì™‘
 		if (r2 > r1)
 		{
 			Swap(x1, y1, r1, x2, y2, r2);
 		}
 
-		//µ¿ÀÏÇÑ°æ¿ì =-1
+		//ë™ì¼í•œê²½ìš° =-1
 		if (x1 == x2 && y1 == y2) {
 			if (r1 == r2)
 				cout << -1 << '\n';
 			else
 				cout << 0 << '\n';
 		}
-		//r2°¡ ³»ºÎ¿¡ ÀÖ´Â °æ¿ì
+		//r2ê°€ ë‚´ë¶€ì— ìˆëŠ” ê²½ìš°
 		else if (sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2)) < r1)
 		{
-			//  ¿ÏÀü ³»Á¢ÇÒ¶§ = 1
+			//  ì™„ì „ ë‚´ì ‘í• ë•Œ = 1
 			if (sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2)) + r2 == r1)
 				cout << 1 << '\n';
-			//  ³»Æ÷ÇÒ¶§ = 0
+			//  ë‚´í¬í• ë•Œ = 0
 			else if (sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2)) + r2 < r1)
 				cout << 0 << '\n';
-			//  ±×°Ô ¾Æ´Ï¸é = 2
+			//  ê·¸ê²Œ ì•„ë‹ˆë©´ = 2
 			else
 				cout << 2 << '\n';
 		}
-		//r2°¡ ¿ÜºÎ¿¡ ÀÖ´Â °æ¿ì
+		//r2ê°€ ì™¸ë¶€ì— ìˆëŠ” ê²½ìš°
 		else if (sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2)) > r1)
 		{
-			//  ¿ÏÀü ¿ÜÁ¢ÇÒ¶§ = 1
+			//  ì™„ì „ ì™¸ì ‘í• ë•Œ = 1
 			if (sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2)) - r2 == r1)
 				cout << 1 << '\n';
-			//  ¿ÜºÎ¿¡ ÀÖÀ»¶§ = 0
+			//  ì™¸ë¶€ì— ìˆì„ë•Œ = 0
 			else if (sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2)) - r2 > r1)
 				cout << 0 << '\n';
-			//  ±×°Ô ¾Æ´Ï¸é = 2
+			//  ê·¸ê²Œ ì•„ë‹ˆë©´ = 2
 			else
 				cout << 2 << '\n';
 		}
-		//r2°¡ r1 ¼± À§¿¡ ÀÖ´Â °æ¿ì
+		//r2ê°€ r1 ì„  ìœ„ì— ìˆëŠ” ê²½ìš°
 		else if (sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2)) == r1)
 		{
 			cout << 2 << '\n';
 		}
-		
-
-		
-
 	}
 	return 0;
 }

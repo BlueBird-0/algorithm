@@ -1,11 +1,11 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include <queue>
 using namespace std;
 namespace {
 	int N, M;
 
-	void Swap(char &ch1, char &ch2)
+	void Swap(char& ch1, char& ch2)
 	{
 		char temp = ch1;
 		ch1 = ch2; ch2 = temp;
@@ -51,19 +51,19 @@ namespace {
 		bool isRed;
 		char Left(Board* board)
 		{
-			return board->ch[y][x-1];
+			return board->ch[y][x - 1];
 		}
 		char Right(Board* board)
 		{
-			return board->ch[y][x+1];
+			return board->ch[y][x + 1];
 		}
 		char Up(Board* board)
 		{
-			return board->ch[y-1][x];
+			return board->ch[y - 1][x];
 		}
 		char Down(Board* board)
 		{
-			return board->ch[y+1][x];
+			return board->ch[y + 1][x];
 		}
 
 		bool CanMoveLeft(Board* board)
@@ -89,7 +89,7 @@ namespace {
 			{
 				if (Left(board) == '.')
 				{
-					Swap(board->ch[y][x], board->ch[y][x-1]);
+					Swap(board->ch[y][x], board->ch[y][x - 1]);
 					x--;
 				}
 				if (Left(board) == '#' || Left(board) == 'B' || Left(board) == 'R')
@@ -110,7 +110,7 @@ namespace {
 			{
 				if (Right(board) == '.')
 				{
-					Swap(board->ch[y][x], board->ch[y][x+1]);
+					Swap(board->ch[y][x], board->ch[y][x + 1]);
 					x++;
 				}
 				if (Right(board) == '#' || Right(board) == 'B' || Right(board) == 'R')
@@ -131,7 +131,7 @@ namespace {
 			{
 				if (Up(board) == '.')
 				{
-					Swap(board->ch[y][x], board->ch[y-1][x]);
+					Swap(board->ch[y][x], board->ch[y - 1][x]);
 					y--;
 				}
 				if (Up(board) == '#' || Up(board) == 'B' || Up(board) == 'R')
@@ -152,7 +152,7 @@ namespace {
 			{
 				if (Down(board) == '.')
 				{
-					Swap(board->ch[y][x], board->ch[y+1][x]);
+					Swap(board->ch[y][x], board->ch[y + 1][x]);
 					y++;
 				}
 				if (Down(board) == '#' || Down(board) == 'B' || Down(board) == 'R')
@@ -247,7 +247,6 @@ namespace {
 		q_prevTilt.push(_prevTilt);
 		q_count.push(_count);
 
-
 		while (q_board.size() != 0)
 		{
 			Marble* r = q_r.front();
@@ -276,7 +275,7 @@ namespace {
 				q_r.push(newR);
 				q_b.push(newB);
 				q_prevTilt.push(LEFT);
-				q_count.push(count+1);
+				q_count.push(count + 1);
 				//Function(newBoard, count+1, newR, newB, LEFT);
 			}
 			if (prevTilt != LEFT && (r->CanMoveRight(board) || b->CanMoveRight(board)))
@@ -322,18 +321,18 @@ namespace {
 
 int Q13460()
 {
-	ios::sync_with_stdio(false);	//½Ã°£ÃÊ°ú ÇÇÇÏ±â À§ÇØ ÇÊ¿äÇÔ (ÀÌ°Ç ÇÊ¿ä¾øÀ½)
-	cin.tie(0);						//½Ã°£ÃÊ°ú ÇÇÇÏ±â À§ÇØ ÇÊ¿äÇÔ
-	//º¸µå ¸¸µé±â
+	ios::sync_with_stdio(false);	//ì‹œê°„ì´ˆê³¼ í”¼í•˜ê¸° ìœ„í•´ í•„ìš”í•¨ (ì´ê±´ í•„ìš”ì—†ìŒ)
+	cin.tie(0);						//ì‹œê°„ì´ˆê³¼ í”¼í•˜ê¸° ìœ„í•´ í•„ìš”í•¨
+	//ë³´ë“œ ë§Œë“¤ê¸°
 	cin >> N >> M;
 	char bboard[10][10];
 
 	Marble r, b;
-	for (int y=0; y<N; y++)
+	for (int y = 0; y < N; y++)
 	{
 		string temp;
 		cin >> temp;
-		for (int x=0; x<M; x++)
+		for (int x = 0; x < M; x++)
 		{
 			bboard[y][x] = temp[x];
 			if (bboard[y][x] == 'R')
@@ -349,7 +348,7 @@ int Q13460()
 		}
 	}
 	Board* board = new Board(bboard);
-	//°ÔÀÓ ±×¸®µð ¾Ë°í¸®Áò
+	//ê²Œìž„ ê·¸ë¦¬ë”” ì•Œê³ ë¦¬ì¦˜
 	Function(board, 0, &r, &b, NONE);
 	if (result == 11)
 		result = -1;

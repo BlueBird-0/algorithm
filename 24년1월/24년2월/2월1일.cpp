@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <queue>
@@ -36,7 +36,6 @@ namespace {
 			{
 				link->parent = current;
 				link->depth = current->depth + 1;
-				
 
 				if (IsPowerOfTwo(current->depth))
 				{
@@ -55,14 +54,14 @@ namespace {
 
 	int Find(int NodeA, int NodeB)
 	{
-		Node *a = &nodes[NodeA];
-		Node *b = &nodes[NodeB];
+		Node* a = &nodes[NodeA];
+		Node* b = &nodes[NodeB];
 		int result;
 		while (true)
 		{
-			//´ë·«ÀûÀÎ À§Ä¡ Ã£±â
-			Node* squareA = (a->square == nullptr)? &nodes[1] : a->square;
-			Node* squareB = (b->square == nullptr)? &nodes[1] : b->square;
+			//ëŒ€ëžµì ì¸ ìœ„ì¹˜ ì°¾ê¸°
+			Node* squareA = (a->square == nullptr) ? &nodes[1] : a->square;
+			Node* squareB = (b->square == nullptr) ? &nodes[1] : b->square;
 			if (squareA->depth > squareB->depth)
 			{
 				a = squareA;
@@ -73,9 +72,9 @@ namespace {
 			}
 			else
 			{
-				if ( squareA->value == squareB->value)
+				if (squareA->value == squareB->value)
 				{
-					//Á¤¹Ð À§Ä¡ Ã£±â
+					//ì •ë°€ ìœ„ì¹˜ ì°¾ê¸°
 					while (true)
 					{
 						if (a->depth > b->depth)
@@ -108,8 +107,8 @@ namespace {
 
 int Q11438()
 {
-	ios::sync_with_stdio(false);	//½Ã°£ÃÊ°ú ÇÇÇÏ±â À§ÇØ ÇÊ¿äÇÔ (ÀÌ°Ç ÇÊ¿ä¾øÀ½)
-	cin.tie(0);						//½Ã°£ÃÊ°ú ÇÇÇÏ±â À§ÇØ ÇÊ¿äÇÔ
+	ios::sync_with_stdio(false);	//ì‹œê°„ì´ˆê³¼ í”¼í•˜ê¸° ìœ„í•´ í•„ìš”í•¨ (ì´ê±´ í•„ìš”ì—†ìŒ)
+	cin.tie(0);						//ì‹œê°„ì´ˆê³¼ í”¼í•˜ê¸° ìœ„í•´ í•„ìš”í•¨
 	int N, M;
 	cin >> N;
 	for (int i = 0; i <= N; i++)
@@ -133,7 +132,7 @@ int Q11438()
 		int nodeA, nodeB;
 		cin >> nodeA >> nodeB;
 
-		cout << "--"<<Find(nodeA, nodeB) << '\n';
+		cout << "--" << Find(nodeA, nodeB) << '\n';
 	}
 
 	return 0;

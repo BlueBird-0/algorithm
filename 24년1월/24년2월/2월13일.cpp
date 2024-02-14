@@ -27,7 +27,7 @@ namespace {
 			yNegSum = 0;
 			for (int i = 0; i < N; i++)
 			{
-				if (Arr[i] == 0) 
+				if (Arr[i] == 0)
 				{
 					xSum += points[i].first;
 					ySum += points[i].second;
@@ -46,7 +46,7 @@ namespace {
 			}
 			return;
 		}
-		else if (n == N){
+		else if (n == N) {
 			return;
 		}
 		else {
@@ -79,7 +79,6 @@ int Q1007()
 		{
 			Arr[j] = 0;
 		}
-
 
 		for (int i = 0; i < N; i++)
 		{

@@ -32,12 +32,12 @@ int Q1967()
 {
 	cin >> n;
 
-	for (int i = 0; i < n-1; i++)
+	for (int i = 0; i < n - 1; i++)
 	{
 		int a, b, c;
 		cin >> a >> b >> c;
-		link[a].push_back(make_pair(b,c));
-		link[b].push_back(make_pair(a,c));
+		link[a].push_back(make_pair(b, c));
+		link[b].push_back(make_pair(a, c));
 	}
 
 	//제일 멀리 있는것 찾기

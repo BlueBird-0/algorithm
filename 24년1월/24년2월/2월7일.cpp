@@ -40,7 +40,6 @@ int Q1005()
 	int T;
 	cin >> T;
 
-
 	while (T--)
 	{
 		//초기화
@@ -56,7 +55,7 @@ int Q1005()
 
 		//입력
 		cin >> N >> K;
-		
+
 		for (int i = 1; i <= N; i++)
 		{
 			cin >> delay[i];

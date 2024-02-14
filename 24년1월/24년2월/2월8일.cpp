@@ -23,17 +23,12 @@ namespace {
 		else if (n == 2)
 		{
 			int front = 0;
-
-
-
-
 		}
 
-		min(DP(n-2), DP(n-1));
+		min(DP(n - 2), DP(n - 1));
 		return 0;
 	}
 }
-
 
 int Q1006() {
 	int T;
@@ -43,7 +38,7 @@ int Q1006() {
 		cin >> N >> W;
 		for (int i = 0; i < N; i++)
 		{
-			cin >> map[0][i]; 
+			cin >> map[0][i];
 		}
 		for (int i = 0; i < N; i++)
 		{
@@ -56,4 +51,3 @@ int Q1006() {
 
 	return 0;
 }
-

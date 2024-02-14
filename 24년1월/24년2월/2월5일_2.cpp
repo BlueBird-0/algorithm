@@ -1,11 +1,11 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <vector>
 #include <algorithm>
 using namespace std;
 
 namespace {
 	class Node {
-	public :
+	public:
 		Node* parent;
 		vector<Node*> childs;
 		bool check;
@@ -15,17 +15,17 @@ namespace {
 	int DFS(Node* node, bool isEarlyAdopter)
 	{
 		int result = 1000001;
-		if (node->childs.size() == 0)//¸®ÇÁ³ëµåÀÏ°æ¿ì
+		if (node->childs.size() == 0)//ë¦¬í”„ë…¸ë“œì¼ê²½ìš°
 		{
 			if (isEarlyAdopter)
 				return 1;
 			else
 				return 0;
 		}
-		//¾ó¸®¾î´äÅÍÀÎ °æ¿ì : ÀÚ½ÄÀÌ ¾ó¸®¾î´äÅÍ ÀÌ°Å³ª, ¾Æ´Ò¼öµµ ÀÖÀ½.
+		//ì–¼ë¦¬ì–´ë‹µí„°ì¸ ê²½ìš° : ìžì‹ì´ ì–¼ë¦¬ì–´ë‹µí„° ì´ê±°ë‚˜, ì•„ë‹ìˆ˜ë„ ìžˆìŒ.
 		if (isEarlyAdopter)
 		{
-			for (Node * child : node->childs)
+			for (Node* child : node->childs)
 			{
 				int value = min(DFS(child, true), DFS(child, false)) + 1;
 				if (value < result)
@@ -33,10 +33,10 @@ namespace {
 			}
 			return result;
 		}
-		//¾Æ´Ñ°æ¿ì : ÀÚ½ÄÀÌ ¹«Á¶°Ç ¾ó¸®¾î´äÅÍ ¿©¾ßÇÔ.
+		//ì•„ë‹Œê²½ìš° : ìžì‹ì´ ë¬´ì¡°ê±´ ì–¼ë¦¬ì–´ë‹µí„° ì—¬ì•¼í•¨.
 		else
 		{
-			for (Node * child : node->childs)
+			for (Node* child : node->childs)
 			{
 				int value = DFS(child, true);
 				if (value < result)
@@ -49,8 +49,8 @@ namespace {
 
 int Q2533()
 {
-	ios::sync_with_stdio(false);	//½Ã°£ÃÊ°ú ÇÇÇÏ±â À§ÇØ ÇÊ¿äÇÔ (ÀÌ°Ç ÇÊ¿ä¾øÀ½)
-	cin.tie(0);						//½Ã°£ÃÊ°ú ÇÇÇÏ±â À§ÇØ ÇÊ¿äÇÔ
+	ios::sync_with_stdio(false);	//ì‹œê°„ì´ˆê³¼ í”¼í•˜ê¸° ìœ„í•´ í•„ìš”í•¨ (ì´ê±´ í•„ìš”ì—†ìŒ)
+	cin.tie(0);						//ì‹œê°„ì´ˆê³¼ í”¼í•˜ê¸° ìœ„í•´ í•„ìš”í•¨
 	int N;
 	cin >> N;
 	for (int i = 0; i < N - 1; i++)
