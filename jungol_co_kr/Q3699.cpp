@@ -1,41 +1,39 @@
 #include <iostream>
 #include <vector>
-#include <unordered_map>
 #include <string>
+#include <map>
 
 using namespace std;
 
-int countCombinations(const vector<pair<string, string>>& clothes) {
-	// 의상을 분류별로 그룹화
-	unordered_map<string, int> clothes_map;
-	for (const auto& item : clothes) {
-		clothes_map[item.second]++;
+
+int main()
+{
+	map<string, int> stringMap;
+	int n;
+	cin >> n;
+	while (n--)
+	{
+		stringMap.clear();
+		int m;
+		cin >> m;
+		while (m--)
+		{
+			string accessory, category;
+			cin >> accessory >> category;
+			if (stringMap.find(category) == stringMap.end())
+				stringMap[category] = 1;
+			else
+				stringMap[category]++;
+		}
+
+		//print
+		int result = 1;
+		for (auto it = stringMap.begin() ; it != stringMap.end(); it++)
+		{
+			result *= ((*it).second+1);
+		}
+		cout << result - 1 << endl;
 	}
-
-	// 조합 계산
-	int combinations = 1;
-	for (const auto& category : clothes_map) {
-		// (해당 분류의 의상 수 + 1) 만큼 곱하기 (의상을 선택하지 않는 경우 포함)
-		combinations *= (category.second + 1);
-	}
-
-	// 아무것도 선택하지 않는 경우를 1 빼기
-	return combinations - 1;
-}
-
-int main() {
-	// 예시 입력
-	vector<pair<string, string>> clothes = {
-		{ "hat", "headgear" },
-		{ "sunglasses", "eyewear" },
-		{ "turban", "headgear" },
-		{ "glasses", "eyewear" },
-		{ "a", "hand"},
-		{ "b", "hand" },
-	};
-
-	// 함수 호출 및 결과 출력
-	cout << countCombinations(clothes) << endl;  // 출력: 5
 
 	return 0;
 }
