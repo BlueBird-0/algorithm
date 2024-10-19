@@ -39,7 +39,7 @@ int main()
 	//normal LIS
 	for (int i = 0; i < str1.size(); i++) {
 		for (int j = i - 1; j >= 0; j--) {
-			if (str1[j] <= str1[i]) {
+			if (str1[j] < str1[i]) {
 				arr1[i] = arr1[j] + 1;
 				break;
 			}
@@ -48,7 +48,7 @@ int main()
 
 	for (int i = 0; i < str2.size(); i++) {
 		for (int j = i - 1; j >= 0; j--) {
-			if (str2[j] <= str2[i]) {
+			if (str2[j] < str2[i]) {
 				arr2[i] = arr2[j] + 1;
 				break;
 			}
@@ -61,17 +61,17 @@ int main()
 		printf("%2c ", str1[i]);
 	}
 	printf("\n");
-	for (int i = 0; i < str1.size(); i++) {
+	/*for (int i = 0; i < str1.size(); i++) {
 		printf("%2d ", arr1[i]);
-	}
+	}*/
 	printf("\n");
 	for (int i = 0; i < str2.size(); i++) {
 		printf("%2c ", str2[i]);
 	}
-	printf("\n");
+	/*printf("\n");
 	for (int i = 0; i < str2.size(); i++) {
 		printf("%2d ", arr2[i]);
-	}
+	}*/
 	printf("\n");
 	
 	int result = 0;
