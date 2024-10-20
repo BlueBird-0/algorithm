@@ -8,6 +8,7 @@ string origin1, origin2;
 string str1, str2;
 int arr1[1001] = { 0, };
 int arr2[1001] = { 0, };
+int dp[1001][1001] = {0,};
 
 int main()
 {
@@ -55,34 +56,33 @@ int main()
 		}
 	}
 
-
-
-	for (int i = 0; i < str1.size(); i++) {
+	/*for (int i = 0; i < str1.size(); i++) {
 		printf("%2c ", str1[i]);
 	}
-	printf("\n");
-	/*for (int i = 0; i < str1.size(); i++) {
-		printf("%2d ", arr1[i]);
-	}*/
 	printf("\n");
 	for (int i = 0; i < str2.size(); i++) {
 		printf("%2c ", str2[i]);
 	}
-	/*printf("\n");
-	for (int i = 0; i < str2.size(); i++) {
-		printf("%2d ", arr2[i]);
-	}*/
-	printf("\n");
-	
-	int result = 0;
-	int temp;
+	printf("\n");*/
 	for (int i = 0; i < str1.size(); i++) {
 		for (int j = 0; j < str2.size(); j++) {
 			if (str1[i] == str2[j]) {
-				temp = min(arr1[i], arr2[j]) + 1;
-				result = max(temp, result);
+				if (i-1 >= 0 && j-1 >= 0) {
+					dp[i][j] = dp[i - 1][j - 1] + 1;
+				}
+				else {
+					dp[i][j] = 1;
+				}
+			}
+			else {
+				int left = 0, up = 0;
+				if (j - 1 >= 0)
+					left = dp[i][j - 1];
+				if (i - 1 >= 0)
+					up = dp[i - 1][j];
+				dp[i][j] = max(left, up);
 			}
 		}
 	}
-	printf("%d", result);
+	printf("%d", dp[str1.size() - 1][str2.size() - 1]);
 }
