@@ -1,83 +1,76 @@
 #include <iostream>
-#include <map>
+#include <vector>
 using namespace std;
-int arr[9][9] = { 0, };
-int counts[10] = { 0, };
 
-bool ableHorizon(int y, int v) {
-	for (int i = 0; i < 9; i++)
-		if (arr[y][i] == v)
-			return false;
-	return true;
+int board[9][9] = { 0, };
+vector<pair<int, int>> emptyCells; // ºó Ä­ ÁÂÇ¥ ÀúÀå
+
+bool ableHorizon(int y, int value) {
+    for (int i = 0; i < 9; i++) {
+        if (board[y][i] == value)
+            return false;
+    }
+    return true;
 }
 
-bool ableVertical(int x, int v) {
-	for (int i = 0; i < 9; i++)
-		if (arr[i][x] == v)
-			return false;
-	return true;
+bool ableVertical(int x, int value) {
+    for (int i = 0; i < 9; i++) {
+        if (board[i][x] == value)
+            return false;
+    }
+    return true;
 }
 
-bool ableBox(int xx, int yy, int v) {
-	int boxX = (xx) / 3;
-	int boxY = (yy) / 3;
-
-	for (int y = 0; y < 3; y++)
-	{
-		for (int x = 0; x < 3; x++) {
-			if (arr[boxY * 3 + y][boxX * 3 + x] == v)
-				return false;
-		}
-	}
-	return true;
+bool ableBox(int x, int y, int value) {
+    int startX = (x / 3) * 3;
+    int startY = (y / 3) * 3;
+    for (int i = startY; i < startY + 3; i++) {
+        for (int j = startX; j < startX + 3; j++) {
+            if (board[i][j] == value)
+                return false;
+        }
+    }
+    return true;
 }
 
-bool findResult(int zeros)
-{
-	if (zeros == 0)
-		return true;
+// ºó Ä­¸¸ Å½»ö
+bool find(int index) {
+    if (index == emptyCells.size())
+        return true;
 
-	for (int y = 0; y < 9; y++) {
-		for (int x = 0; x < 9; x++) {
-			if (arr[y][x] == 0) {
-				for (int i = 1; i <= 9; i++) {
-					if (counts[i] < 9 && ableHorizon(y, i) && ableVertical(x, i) && ableBox(x, y, i)) {
-						arr[y][x] = i;
-						counts[i]++;
-						if (findResult(zeros - 1))
-							return true;
-						counts[i]--;
-					}
-				}
-			}
-		}
-	}
-	return false;
+    int y = emptyCells[index].first;
+    int x = emptyCells[index].second;
+
+    for (int n = 1; n <= 9; n++) {
+        if (ableHorizon(y, n) && ableVertical(x, n) && ableBox(x, y, n)) {
+            board[y][x] = n;
+            if (find(index + 1)) // ´ÙÀ½ ºó Ä­À¸·Î ³Ñ¾î°¨
+                return true;
+            board[y][x] = 0; // ¹éÆ®·¡Å·
+        }
+    }
+
+    return false;
 }
 
-int main()
-{
-	int zeros = 0;
-	for (int y = 0; y < 9; y++) {
-		for (int x = 0; x < 9; x++) {
-			scanf("%d", &arr[y][x]);
-			if (arr[y][x] == 0)
-				zeros++;
-			else
-				counts[arr[y][x]]++;
-		}
-	}
+int main() {
+    for (int y = 0; y < 9; y++) {
+        for (int x = 0; x < 9; x++) {
+            scanf("%d", &board[y][x]);
+            if (board[y][x] == 0) {
+                emptyCells.push_back({ y, x }); // ºó Ä­ ÀúÀå
+            }
+        }
+    }
 
-	findResult(zeros);
+    find(0); // ºó Ä­ Ã¹ ¹øÂ°ºÎÅÍ ½ÃÀÛ
 
-	for (int y = 0; y < 9; y++) {
-		for (int x = 0; x < 9; x++) {
-			printf("%-2d", arr[y][x]);
-		}
-		printf("\n");
-	}
+    for (int y = 0; y < 9; y++) {
+        for (int x = 0; x < 9; x++) {
+            printf("%-2d", board[y][x]);
+        }
+        printf("\n");
+    }
 
-
-
-	return 0;
+    return 0;
 }
