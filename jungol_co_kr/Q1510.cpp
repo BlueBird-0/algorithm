@@ -22,15 +22,22 @@ int main()
 	sort(arr.begin(), arr.end(), [](pair<int, int>& a, pair<int, int>& b)->bool {return a.first * a.second < b.first* b.second; });
 
 
-	int stack[100] = {0,};
+	int stack[100];
+	for (int i = 0; i < 100; i++)
+		stack[i] = 1;
 
-	for(int i=0; i<n; i++)
+	for(int i=1; i<n; i++)
 	{
 		for (int j = i - 1; j >= 0; j--) {
-			if (arr[i].first >= arr[j].first && arr[i].first >= arr[j].second) {
+			if (arr[i].first >= arr[j].first && arr[i].second>= arr[j].second) {
 				stack[i] = max(stack[j] + 1, stack[i]);
 			}
 		}
 	}
-	printf("%d", stack[n-1]);
+
+	int result = 0;
+	for (int i = 0; i < n; i++)
+		result = max(result, stack[i]);
+
+	printf("%d", result);
 }
