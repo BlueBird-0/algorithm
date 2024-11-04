@@ -1,58 +1,39 @@
 #include <iostream>
 #include <stack>
 #include <algorithm>
-#include <limits.h>
 using namespace std;
+
 int N;
-stack<pair<int, int>> arr;
-int temp[100001] = { 0, };
+stack<pair<int, unsigned long long>> arr;  // (index, height)
 
 int main() {
-	cin >> N;
+    cin >> N;
 
-	int newH=0, prev = 0;
+    unsigned long long maxArea = 0;    // 최댓값 저장 변수
+    unsigned long long newH = 0;       // 새로운 히스토그램 높이
 
-	int stackMaxArea = 0;
-	for (int i = 0; i < N; i++) {
-		scanf("%d", &newH);
-		if (prev < newH) {
-			arr.push(make_pair(i, newH));
-		}
-		else {
-			int sum = 0;
-			int maxIdx = 0;
-			int minIdx = INT_MAX;
-			while (!arr.empty()) {
-				if (arr.top().second > newH) {
-					maxIdx = max(maxIdx, arr.top().first);
-					minIdx = min(minIdx, arr.top().first);
-					sum = max(sum, arr.top().second * (maxIdx - minIdx + 1));
+    for (int i = 0; i <= N; i++) {
+        if (i < N) {
+            cin >> newH;
+        }
+        else {
+            newH = 0;  // 마지막에 스택을 비우기 위한 높이 설정
+        }
 
-					stackMaxArea = max(stackMaxArea, sum + temp[arr.top().first]);
-					arr.pop();
-				}
-				else {
-					arr.push(make_pair(i, newH));
-					temp[i] = (maxIdx - minIdx + 1) * newH;
-					break;
-				}
-			}
-		}
+        int startIndex = i;
 
-		prev = newH;
-	}
-	int maxIdx = 0;
-	int minIdx = INT_MAX;
-	while (!arr.empty()) {
-		if (arr.top().second > newH) {
-			maxIdx = max(maxIdx, arr.top().first);
-			minIdx = min(minIdx, arr.top().first);
+        while (!arr.empty() && arr.top().second > newH) {
+            auto top = arr.top();
+            arr.pop();
+            unsigned long long area = top.second * (i - top.first);
+            maxArea = max(maxArea, area);
+            startIndex = top.first;  // 현재 인덱스 업데이트
+        }
 
-			stackMaxArea = max(stackMaxArea, arr.top().second * (maxIdx - minIdx + 1));
-			arr.pop();
-		}
-		else
-			break;
-	}
-	printf("%d", stackMaxArea);
+        // 스택에 현재 높이를 push
+        arr.push(make_pair(startIndex, newH));  // emplace 대신 make_pair 사용
+    }
+
+    cout << maxArea << '\n';
+    return 0;
 }
