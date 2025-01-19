@@ -44,7 +44,7 @@ int main()
 
 	for (int i = 0; i < k; i++) {
 		int y, x;
-		scanf("%d %d", &x, &y);
+		scanf("%d %d", &y, &x);
 		map[y][x] = APPLE;
 	}
 	queue<pair<int, char>> commands;
@@ -67,17 +67,21 @@ int main()
 		//Move
 		player.move();
 
-		if (map[player.pos.back().first][player.pos.back().second] == PLAYER || map[player.pos.back().first][player.pos.back().second] == WALL) {
+		pair<int, int>& newPos = player.pos.back();
+
+		
+
+		if (map[newPos.first][newPos.second] == WALL || map[newPos.first][newPos.second] == PLAYER) {
 			break;
 		}
-		else if (map[player.pos.back().first][player.pos.back().second] == APPLE) {
-			map[player.pos.back().first][player.pos.back().second] = PLAYER;
-		}
-		else {
-			map[player.pos.back().first][player.pos.back().second] = PLAYER;
+
+		if (map[newPos.first][newPos.second] != APPLE) {
 			map[player.pos.front().first][player.pos.front().second] = 0;
 			player.pos.pop();
 		}
+
+		map[newPos.first][newPos.second] = PLAYER;
+
 		//change direct
 		if (!commands.empty() && commands.front().first == time) {
 			if (commands.front().second == 'L') {
